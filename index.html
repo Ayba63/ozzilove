@@ -1,0 +1,285 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для Ози ❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background:
+                radial-gradient(ellipse at center,
+                #441020 0%,
+                #200817 45%,
+                #09030a 100%);
+            font-family: Georgia, serif;
+            color: white;
+        }
+
+        /* Фоновое свечение */
+        .glow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: #ff1744;
+            filter: blur(150px);
+            opacity: 0.22;
+            animation: glow 3s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                transform: scale(0.8);
+                opacity: 0.15;
+            }
+            to {
+                transform: scale(1.3);
+                opacity: 0.35;
+            }
+        }
+
+        /* Главный блок */
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+
+        .subtitle {
+            color: #ffb3c6;
+            font-size: 17px;
+            letter-spacing: 4px;
+            margin-bottom: 35px;
+            animation: appear 2s ease;
+        }
+
+        h1 {
+            font-size: clamp(38px, 9vw, 65px);
+            color: #ffb6c9;
+            text-shadow: 0 0 20px #ff1744;
+            margin-bottom: 35px;
+            animation: appear 2s ease;
+        }
+
+        /* Большое сердце */
+        .heart {
+            width: 115px;
+            height: 115px;
+            margin: 0 auto 45px;
+            animation: heartbeat 1.2s infinite;
+            filter: drop-shadow(0 0 15px #ff1744)
+                    drop-shadow(0 0 35px #ff1744);
+        }
+
+        .heart svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .heart path {
+            fill: #ff1744;
+            stroke: #ff8fa8;
+            stroke-width: 1.5;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            15% {
+                transform: scale(1.18);
+            }
+            30% {
+                transform: scale(1);
+            }
+            45% {
+                transform: scale(1.12);
+            }
+        }
+
+        /* Послание */
+        .message {
+            max-width: 550px;
+            margin: 0 auto;
+            font-size: clamp(20px, 4vw, 27px);
+            line-height: 1.6;
+            color: #ffe1e9;
+            text-shadow: 0 0 12px #ff1744;
+            animation: appear 3s ease;
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-size: 17px;
+            color: #ff8fa8;
+            letter-spacing: 2px;
+            animation: appear 4s ease;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Летающие сердечки */
+        .small-heart {
+            position: absolute;
+            bottom: -40px;
+            color: #ff4d79;
+            pointer-events: none;
+            user-select: none;
+            animation: floatUp linear forwards;
+            text-shadow: 0 0 12px #ff1744;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+            }
+            85% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-115vh) rotate(360deg) scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        /* Маленькая подсказка */
+        .footer {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #d98a9e;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 480px) {
+            .heart {
+                width: 95px;
+                height: 95px;
+            }
+
+            .subtitle {
+                font-size: 13px;
+                letter-spacing: 3px;
+            }
+
+            .footer {
+                margin-top: 30px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="glow"></div>
+
+    <main class="container">
+
+        <p class="subtitle">ОСОБЕННОЙ ДЕВУШКЕ</p>
+
+        <h1>Ози ❤️</h1>
+
+        <div class="heart">
+            <svg viewBox="0 0 100 100" aria-label="Красное сердце">
+                <path d="M50 88
+                         C40 78 5 55 5 30
+                         C5 5 37 -2 50 22
+                         C63 -2 95 5 95 30
+                         C95 55 60 78 50 88 Z"/>
+            </svg>
+        </div>
+
+        <p class="message">
+            я безумно скучаю по тебе,
+            котенок ❤️
+        </p>
+
+        <p class="signature">
+            Ты всегда в моём сердце...
+        </p>
+
+        <p class="footer">
+            Сделано с любовью ❤️
+        </p>
+
+    </main>
+
+    <script>
+        // Создаём маленькие летающие сердечки
+        function createHeart() {
+
+            const heart = document.createElement("div");
+
+            heart.classList.add("small-heart");
+
+            // Случайный символ сердечка
+            const hearts = ["❤️", "💕", "💗", "💖", "💘"];
+
+            heart.innerHTML =
+                hearts[Math.floor(Math.random() * hearts.length)];
+
+            // Случайное положение на экране
+            heart.style.left = Math.random() * 100 + "vw";
+
+            // Случайный размер
+            heart.style.fontSize =
+                (12 + Math.random() * 25) + "px";
+
+            // Случайная скорость
+            heart.style.animationDuration =
+                (5 + Math.random() * 6) + "s";
+
+            document.body.appendChild(heart);
+
+            // Удаляем сердечко после окончания анимации
+            setTimeout(() => {
+                heart.remove();
+            }, 12000);
+        }
+
+        // Новое сердечко каждые 350 миллисекунд
+        setInterval(createHeart, 350);
+
+        // Несколько сердечек сразу при открытии сайта
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHeart, i * 200);
+        }
+    </script>
+
+</body>
+</html>
